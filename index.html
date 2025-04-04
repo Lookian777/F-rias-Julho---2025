@@ -36,10 +36,11 @@
 
     .progress-bar {
       width: 100%;
+      max-width: 600px;
       height: 20px;
       background-color: darkgreen;
       border: 2px solid limegreen;
-      margin-top: 10px;
+      margin: 20px auto 0;
       position: relative;
     }
 
@@ -81,10 +82,11 @@
     function updateTimer() {
       const agora = new Date();
       const dataAlvo = new Date('2025-07-06T14:00:00');
-      const inicio = new Date('2025-04-04T00:00:00'); // Data inicial do contador
+      const inicioSemestre = new Date('2025-01-31T22:00:00');
       const diff = dataAlvo - agora;
-      const totalDuration = dataAlvo - inicio;
-      
+      const totalSemestre = dataAlvo - inicioSemestre;
+      const decorrido = agora - inicioSemestre;
+
       if (diff <= 0) {
         document.getElementById("timer").innerHTML = "CHEGOU O DIA!";
         document.getElementById("extra-info").innerHTML = "";
@@ -92,8 +94,7 @@
         document.getElementById("progress-fill").style.width = "100%";
         return;
       }
-      
-      // Cálculo do tempo restante
+
       const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
       const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -101,7 +102,6 @@
 
       document.getElementById("timer").innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
 
-      // Informações extras
       const semanas = (dias / 7).toFixed(2);
       const totalHoras = Math.floor(diff / (1000 * 60 * 60));
       const totalSegundos = Math.floor(diff / 1000);
@@ -110,10 +110,12 @@
       document.getElementById("hours").innerHTML = `Horas restantes: ${totalHoras}`;
       document.getElementById("seconds").innerHTML = `Segundos restantes: ${totalSegundos}`;
 
-      // Barra de progresso
-      const progresso = ((1 - diff / totalDuration) * 100).toFixed(2);
-      document.getElementById("progress-fill").style.width = progresso + "%";
-      document.getElementById("progress-text").innerText = progresso + "%";
+      let progresso = (decorrido / totalSemestre) * 100;
+      progresso = progresso < 0 ? 0 : progresso > 100 ? 100 : progresso;
+      const progressoTexto = progresso.toFixed(2);
+
+      document.getElementById("progress-fill").style.width = progressoTexto + "%";
+      document.getElementById("progress-text").innerText = progressoTexto + "%";
     }
 
     updateTimer();
