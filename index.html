@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cronômetro para 06 de julho de 2025 às 14h</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #timer {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cronômetro para 06 de julho de 2025 às 14h</h1>
+  <p id="timer"></p>
+
+  <script>
+    function updateTimer() {
+      const agora = new Date();
+      // Data alvo: 06 de julho de 2025 às 14h
+      const dataAlvo = new Date('2025-07-06T14:00:00');
+      const diff = dataAlvo - agora;
+      
+      if (diff <= 0) {
+        document.getElementById("timer").innerHTML = "Chegou a data!";
+        return;
+      }
+      
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      document.getElementById("timer").innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
