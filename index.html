@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>FÉRIAS EM:</title>
+  <title>LIBERDADE EM:</title>
   <style>
     body {
       font-family: 'Courier New', monospace;
@@ -73,7 +73,7 @@
   </style>
 </head>
 <body>
-  <h1>FÉRIAS EM:</h1>
+  <h1>LIBERDADE EM:</h1>
   <div id="timer">00d 00h 00m 00s</div>
 
   <div id="extra-info">
@@ -83,7 +83,7 @@
   </div>
 
   <div class="progress-section">
-    <div class="progress-label">PROGRESSO SEMESTRAL</div>
+    <div class="progress-label">SEMESTRE - PUC</div>
     <div class="progress-bar">
       <div class="progress-fill" id="progress-fill"></div>
       <div class="progress-text" id="progress-text">0.00%</div>
@@ -93,8 +93,8 @@
   <script>
     function updateTimer() {
       const agora = new Date();
-      const dataAlvo = new Date('2025-07-06T14:00:00');
-      const inicioSemestre = new Date('2025-01-31T22:00:00');
+      const dataAlvo = new Date('2025-12-05T00:00:00'); // Fim do semestre
+      const inicioSemestre = new Date('2025-08-04T00:00:00'); // Início do semestre
       const diff = dataAlvo - agora;
       const totalSemestre = dataAlvo - inicioSemestre;
       const decorrido = agora - inicioSemestre;
