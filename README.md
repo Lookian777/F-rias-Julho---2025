@@ -1,2 +1,2 @@
 # Liberdade em...
-Cronômetro para às férias do Sem DJ
+Cronômetro para às férias do Seminário em 2025 (17.12)
